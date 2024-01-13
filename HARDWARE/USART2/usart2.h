@@ -22,21 +22,6 @@
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_usart.h"
 
-
-////串口硬件定义
-//#define UART_PORT					USART1
-//#define UART_PORT_CLK				RCC_APB2Periph_USART1
-//#define UART_PORT_AF				GPIO_Remap_USART1
-
-////串口引脚定义
-//#define UART_TX_GPIO_PORT			GPIOA
-//#define UART_TX_GPIO_CLK			RCC_APB2Periph_GPIOA
-//#define UART_TX_GPIO_PIN			GPIO_Pin_9
-
-//#define UART_RX_GPIO_PORT			GPIOA
-//#define UART_RX_GPIO_CLK			RCC_APB2Periph_GPIOA
-//#define UART_RX_GPIO_PIN			GPIO_Pin_10
-
 //串口硬件定义
 #define UART_PORT					USART2
 #define UART_PORT_CLK				RCC_APB1Periph_USART2
