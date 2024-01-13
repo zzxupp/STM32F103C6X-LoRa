@@ -2,57 +2,45 @@
 //	Project			:	sht30
 //	Version			:	V1.0
 //	File				:	led.c
-//	Author			:	eonegh
+//	Author			:	zzxupp
 //	Date				:	2023-04-20
 //	Controller	:	STM32F103C6T6
 //	IDE					:	Keil uVision5 V5.36.0.0
 //	Compiler		:	eonegh
-//	Brief				:	LED¿ØÖÆAPI£¬ÓÃÓÚdebug
+//	Brief				:	LEDæŽ§åˆ¶APIï¼Œç”¨äºŽdebug
 //=============================================================================
 
 /******************************************************************************/
-/* ÒýÓÃµÄÍ·ÎÄ¼þ£¨'#include'£©                                                  */
+/* å¼•ç”¨çš„å¤´æ–‡ä»¶ï¼ˆ'#include'ï¼‰                                                  */
 /******************************************************************************/
-#include "led.h"	//LED¿ØÖÆAPI£¬ÓÃÓÚdebug
-
-
-
-/******************************************************************************/
-/* ±¾µØ±äÁ¿µÄ¶¨Òå ('static')                                                   */
-/******************************************************************************/
+#include "led.h"	//LEDæŽ§åˆ¶APIï¼Œç”¨äºŽdebug
 
 
 
 /******************************************************************************/
-/* È«¾Ö±äÁ¿µÄ¶¨Òå ('extern'¡¢'static'¡¢'volatile'¡¢'const')                    */
-/******************************************************************************/
-
-
-
-/******************************************************************************/
-/* º¯ÊýÔ­ÐÍ£ºÈ«¾Ö ('extern') £¬±¾µØ ('static')                                 */
+/* å‡½æ•°åŽŸåž‹ï¼šå…¨å±€ ('extern') ï¼Œæœ¬åœ° ('static')                                 */
 /******************************************************************************/
 
 /**
  ******************************************************************************
- ** \brief  ³õÊ¼»¯PC13ÎªÊý×ÖÊä³ö¿Ú.Õâ¸öÒý½ÅÁ¬½Óµ½Íâ²¿µÄLED
+ ** \brief  åˆå§‹åŒ–PC13ä¸ºæ•°å­—è¾“å‡ºå£.è¿™ä¸ªå¼•è„šè¿žæŽ¥åˆ°å¤–éƒ¨çš„LED
  **
- ** \param  ¿Õ
+ ** \param  ç©º
  **
- ** \retval ¿Õ
+ ** \retval ç©º
  **
  ******************************************************************************
 **/
 void LED_PinConfig(void)
 {
- GPIO_InitTypeDef  GPIO_InitStructure;									//¶¨ÒåÒ»¸öGPIO²Ù×÷Àà½á¹¹Ìå£¬ÓÃÓÚ¶ÔÆä²ÎÊý½øÐÐÅäÖÃ
- RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);	//GPIOÊ±ÖÓ£º		Ê¹ÄÜPC¶Ë¿ÚÊ±ÖÓ
- GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;				 			//GPIOÒý½Å£º		Ö¸¶¨LED0-->P13¶Ë¿Ú
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 	//GPIOÊäÈëÊä³ö£ºÍÆÍìÊä³ö(¼È¿ÉÊä³ö¸ßµçÆ½ÓÖ¿ÉµÍµçÆ½)
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 	//GPIOÊ±ÖÓ£º		IO¿ÚÊ±ÖÓËÙ¶ÈÎª50MHz
- GPIO_Init(GPIOC, &GPIO_InitStructure);					 				//GPIOÅäÖÃÉúÐ§£º¸ù¾ÝÉè¶¨²ÎÊý³õÊ¼»¯GPIOC.13
+ GPIO_InitTypeDef  GPIO_InitStructure;									//å®šä¹‰ä¸€ä¸ªGPIOæ“ä½œç±»ç»“æž„ä½“ï¼Œç”¨äºŽå¯¹å…¶å‚æ•°è¿›è¡Œé…ç½®
+ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);	//GPIOæ—¶é’Ÿï¼š		ä½¿èƒ½PCç«¯å£æ—¶é’Ÿ
+ GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;				 			//GPIOå¼•è„šï¼š		æŒ‡å®šLED0-->P13ç«¯å£
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 	//GPIOè¾“å…¥è¾“å‡ºï¼šæŽ¨æŒ½è¾“å‡º(æ—¢å¯è¾“å‡ºé«˜ç”µå¹³åˆå¯ä½Žç”µå¹³)
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 	//GPIOæ—¶é’Ÿï¼š		IOå£æ—¶é’Ÿé€Ÿåº¦ä¸º50MHz
+ GPIO_Init(GPIOC, &GPIO_InitStructure);					 				//GPIOé…ç½®ç”Ÿæ•ˆï¼šæ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–GPIOC.13
 	
- GPIO_SetBits(GPIOC,GPIO_Pin_13);						 						//GPIO³õÊ¼»¯£º	PC.13 Êä³ö¸ßµçÆ½£¬¼´¹Ø±ÕLED
+ GPIO_SetBits(GPIOC,GPIO_Pin_13);						 						//GPIOåˆå§‹åŒ–ï¼š	PC.13 è¾“å‡ºé«˜ç”µå¹³ï¼Œå³å…³é—­LED
 }
  
 
